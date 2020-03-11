@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sinnet.inspire.wxsmallservice.dao.mapper.CrmFlRechargeEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.sinnet.inspire.wxsmallservice.dao.entity.CrmFlRechargeEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="crm_fl_recharge_id" property="crmFlRechargeId" jdbcType="VARCHAR" />
+    <result column="activiti_task_id" property="activitiTaskId" jdbcType="VARCHAR" />
+    <result column="fl_mobile" property="flMobile" jdbcType="VARCHAR" />
+    <result column="recharge_type" property="rechargeType" jdbcType="VARCHAR" />
+    <result column="recharge_money" property="rechargeMoney" jdbcType="DECIMAL" />
+    <result column="mark" property="mark" jdbcType="VARCHAR" />
+    <result column="apply_user_id" property="applyUserId" jdbcType="VARCHAR" />
+    <result column="apply_user_name" property="applyUserName" jdbcType="VARCHAR" />
+    <result column="examine_user_id" property="examineUserId" jdbcType="VARCHAR" />
+    <result column="examine_user_name" property="examineUserName" jdbcType="VARCHAR" />
+    <result column="examine_result" property="examineResult" jdbcType="VARCHAR" />
+    <result column="recharge_result" property="rechargeResult" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, crm_fl_recharge_id, activiti_task_id, fl_mobile, recharge_type, recharge_money, 
+    mark, apply_user_id, apply_user_name, examine_user_id, examine_user_name, examine_result, 
+    recharge_result, state, create_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from crm_fl_recharge
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from crm_fl_recharge
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.CrmFlRechargeEntity" >
+    insert into crm_fl_recharge (id, crm_fl_recharge_id, activiti_task_id, 
+      fl_mobile, recharge_type, recharge_money, 
+      mark, apply_user_id, apply_user_name, 
+      examine_user_id, examine_user_name, examine_result, 
+      recharge_result, state, create_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{crmFlRechargeId,jdbcType=VARCHAR}, #{activitiTaskId,jdbcType=VARCHAR}, 
+      #{flMobile,jdbcType=VARCHAR}, #{rechargeType,jdbcType=VARCHAR}, #{rechargeMoney,jdbcType=DECIMAL}, 
+      #{mark,jdbcType=VARCHAR}, #{applyUserId,jdbcType=VARCHAR}, #{applyUserName,jdbcType=VARCHAR}, 
+      #{examineUserId,jdbcType=VARCHAR}, #{examineUserName,jdbcType=VARCHAR}, #{examineResult,jdbcType=VARCHAR}, 
+      #{rechargeResult,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.CrmFlRechargeEntity" >
+    insert into crm_fl_recharge
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="crmFlRechargeId != null" >
+        crm_fl_recharge_id,
+      </if>
+      <if test="activitiTaskId != null" >
+        activiti_task_id,
+      </if>
+      <if test="flMobile != null" >
+        fl_mobile,
+      </if>
+      <if test="rechargeType != null" >
+        recharge_type,
+      </if>
+      <if test="rechargeMoney != null" >
+        recharge_money,
+      </if>
+      <if test="mark != null" >
+        mark,
+      </if>
+      <if test="applyUserId != null" >
+        apply_user_id,
+      </if>
+      <if test="applyUserName != null" >
+        apply_user_name,
+      </if>
+      <if test="examineUserId != null" >
+        examine_user_id,
+      </if>
+      <if test="examineUserName != null" >
+        examine_user_name,
+      </if>
+      <if test="examineResult != null" >
+        examine_result,
+      </if>
+      <if test="rechargeResult != null" >
+        recharge_result,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="crmFlRechargeId != null" >
+        #{crmFlRechargeId,jdbcType=VARCHAR},
+      </if>
+      <if test="activitiTaskId != null" >
+        #{activitiTaskId,jdbcType=VARCHAR},
+      </if>
+      <if test="flMobile != null" >
+        #{flMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeType != null" >
+        #{rechargeType,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeMoney != null" >
+        #{rechargeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="mark != null" >
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserId != null" >
+        #{applyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserName != null" >
+        #{applyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="examineUserId != null" >
+        #{examineUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="examineUserName != null" >
+        #{examineUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="examineResult != null" >
+        #{examineResult,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeResult != null" >
+        #{rechargeResult,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.CrmFlRechargeEntity" >
+    update crm_fl_recharge
+    <set >
+      <if test="crmFlRechargeId != null" >
+        crm_fl_recharge_id = #{crmFlRechargeId,jdbcType=VARCHAR},
+      </if>
+      <if test="activitiTaskId != null" >
+        activiti_task_id = #{activitiTaskId,jdbcType=VARCHAR},
+      </if>
+      <if test="flMobile != null" >
+        fl_mobile = #{flMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeType != null" >
+        recharge_type = #{rechargeType,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeMoney != null" >
+        recharge_money = #{rechargeMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="mark != null" >
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserId != null" >
+        apply_user_id = #{applyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUserName != null" >
+        apply_user_name = #{applyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="examineUserId != null" >
+        examine_user_id = #{examineUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="examineUserName != null" >
+        examine_user_name = #{examineUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="examineResult != null" >
+        examine_result = #{examineResult,jdbcType=VARCHAR},
+      </if>
+      <if test="rechargeResult != null" >
+        recharge_result = #{rechargeResult,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.CrmFlRechargeEntity" >
+    update crm_fl_recharge
+    set crm_fl_recharge_id = #{crmFlRechargeId,jdbcType=VARCHAR},
+      activiti_task_id = #{activitiTaskId,jdbcType=VARCHAR},
+      fl_mobile = #{flMobile,jdbcType=VARCHAR},
+      recharge_type = #{rechargeType,jdbcType=VARCHAR},
+      recharge_money = #{rechargeMoney,jdbcType=DECIMAL},
+      mark = #{mark,jdbcType=VARCHAR},
+      apply_user_id = #{applyUserId,jdbcType=VARCHAR},
+      apply_user_name = #{applyUserName,jdbcType=VARCHAR},
+      examine_user_id = #{examineUserId,jdbcType=VARCHAR},
+      examine_user_name = #{examineUserName,jdbcType=VARCHAR},
+      examine_result = #{examineResult,jdbcType=VARCHAR},
+      recharge_result = #{rechargeResult,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

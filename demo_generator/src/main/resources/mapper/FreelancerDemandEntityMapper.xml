@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinnet.inspire.wxsmallservice.dao.mapper.FreelancerDemandEntityMapper">
+  <resultMap id="BaseResultMap" type="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerDemandEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="demand_id" jdbcType="VARCHAR" property="demandId" />
+    <result column="demand_title" jdbcType="VARCHAR" property="demandTitle" />
+    <result column="demand_link" jdbcType="VARCHAR" property="demandLink" />
+    <result column="demand_order" jdbcType="TINYINT" property="demandOrder" />
+    <result column="demand_status" jdbcType="BIT" property="demandStatus" />
+    <result column="create_user_id" jdbcType="VARCHAR" property="createUserId" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_user_id" jdbcType="VARCHAR" property="updateUserId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerDemandEntityWithBLOBs">
+    <result column="demand_keyword" jdbcType="LONGVARCHAR" property="demandKeyword" />
+    <result column="demand_detail" jdbcType="LONGVARCHAR" property="demandDetail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, demand_id, demand_title, demand_link, demand_order, demand_status, create_user_id, 
+    create_date, update_user_id, update_date
+  </sql>
+  <sql id="Blob_Column_List">
+    demand_keyword, demand_detail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from inspire_freelancer_demand
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from inspire_freelancer_demand
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerDemandEntityWithBLOBs">
+    insert into inspire_freelancer_demand (id, demand_id, demand_title, 
+      demand_link, demand_order, demand_status, 
+      create_user_id, create_date, update_user_id, 
+      update_date, demand_keyword, demand_detail
+      )
+    values (#{id,jdbcType=INTEGER}, #{demandId,jdbcType=VARCHAR}, #{demandTitle,jdbcType=VARCHAR}, 
+      #{demandLink,jdbcType=VARCHAR}, #{demandOrder,jdbcType=TINYINT}, #{demandStatus,jdbcType=BIT}, 
+      #{createUserId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{demandKeyword,jdbcType=LONGVARCHAR}, #{demandDetail,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerDemandEntityWithBLOBs">
+    insert into inspire_freelancer_demand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="demandId != null">
+        demand_id,
+      </if>
+      <if test="demandTitle != null">
+        demand_title,
+      </if>
+      <if test="demandLink != null">
+        demand_link,
+      </if>
+      <if test="demandOrder != null">
+        demand_order,
+      </if>
+      <if test="demandStatus != null">
+        demand_status,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="demandKeyword != null">
+        demand_keyword,
+      </if>
+      <if test="demandDetail != null">
+        demand_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="demandId != null">
+        #{demandId,jdbcType=VARCHAR},
+      </if>
+      <if test="demandTitle != null">
+        #{demandTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="demandLink != null">
+        #{demandLink,jdbcType=VARCHAR},
+      </if>
+      <if test="demandOrder != null">
+        #{demandOrder,jdbcType=TINYINT},
+      </if>
+      <if test="demandStatus != null">
+        #{demandStatus,jdbcType=BIT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="demandKeyword != null">
+        #{demandKeyword,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="demandDetail != null">
+        #{demandDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerDemandEntityWithBLOBs">
+    update inspire_freelancer_demand
+    <set>
+      <if test="demandId != null">
+        demand_id = #{demandId,jdbcType=VARCHAR},
+      </if>
+      <if test="demandTitle != null">
+        demand_title = #{demandTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="demandLink != null">
+        demand_link = #{demandLink,jdbcType=VARCHAR},
+      </if>
+      <if test="demandOrder != null">
+        demand_order = #{demandOrder,jdbcType=TINYINT},
+      </if>
+      <if test="demandStatus != null">
+        demand_status = #{demandStatus,jdbcType=BIT},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="demandKeyword != null">
+        demand_keyword = #{demandKeyword,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="demandDetail != null">
+        demand_detail = #{demandDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerDemandEntityWithBLOBs">
+    update inspire_freelancer_demand
+    set demand_id = #{demandId,jdbcType=VARCHAR},
+      demand_title = #{demandTitle,jdbcType=VARCHAR},
+      demand_link = #{demandLink,jdbcType=VARCHAR},
+      demand_order = #{demandOrder,jdbcType=TINYINT},
+      demand_status = #{demandStatus,jdbcType=BIT},
+      create_user_id = #{createUserId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      demand_keyword = #{demandKeyword,jdbcType=LONGVARCHAR},
+      demand_detail = #{demandDetail,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerDemandEntity">
+    update inspire_freelancer_demand
+    set demand_id = #{demandId,jdbcType=VARCHAR},
+      demand_title = #{demandTitle,jdbcType=VARCHAR},
+      demand_link = #{demandLink,jdbcType=VARCHAR},
+      demand_order = #{demandOrder,jdbcType=TINYINT},
+      demand_status = #{demandStatus,jdbcType=BIT},
+      create_user_id = #{createUserId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.zyr.demo_generator.dao.entity.FreelancerDemandEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="demand_id" jdbcType="VARCHAR" property="demandId" />
+    <result column="demand_title" jdbcType="VARCHAR" property="demandTitle" />
+    <result column="demand_link" jdbcType="VARCHAR" property="demandLink" />
+    <result column="demand_order" jdbcType="TINYINT" property="demandOrder" />
+    <result column="demand_status" jdbcType="BIT" property="demandStatus" />
+    <result column="create_user_id" jdbcType="VARCHAR" property="createUserId" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_user_id" jdbcType="VARCHAR" property="updateUserId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zyr.demo_generator.dao.entity.FreelancerDemandEntityWithBLOBs">
+    <result column="demand_keyword" jdbcType="LONGVARCHAR" property="demandKeyword" />
+    <result column="demand_detail" jdbcType="LONGVARCHAR" property="demandDetail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, demand_id, demand_title, demand_link, demand_order, demand_status, create_user_id, 
+    create_date, update_user_id, update_date
+  </sql>
+  <sql id="Blob_Column_List">
+    demand_keyword, demand_detail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from inspire_freelancer_demand
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from inspire_freelancer_demand
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zyr.demo_generator.dao.entity.FreelancerDemandEntityWithBLOBs">
+    insert into inspire_freelancer_demand (id, demand_id, demand_title, 
+      demand_link, demand_order, demand_status, 
+      create_user_id, create_date, update_user_id, 
+      update_date, demand_keyword, demand_detail
+      )
+    values (#{id,jdbcType=INTEGER}, #{demandId,jdbcType=VARCHAR}, #{demandTitle,jdbcType=VARCHAR}, 
+      #{demandLink,jdbcType=VARCHAR}, #{demandOrder,jdbcType=TINYINT}, #{demandStatus,jdbcType=BIT}, 
+      #{createUserId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{demandKeyword,jdbcType=LONGVARCHAR}, #{demandDetail,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zyr.demo_generator.dao.entity.FreelancerDemandEntityWithBLOBs">
+    insert into inspire_freelancer_demand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="demandId != null">
+        demand_id,
+      </if>
+      <if test="demandTitle != null">
+        demand_title,
+      </if>
+      <if test="demandLink != null">
+        demand_link,
+      </if>
+      <if test="demandOrder != null">
+        demand_order,
+      </if>
+      <if test="demandStatus != null">
+        demand_status,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="demandKeyword != null">
+        demand_keyword,
+      </if>
+      <if test="demandDetail != null">
+        demand_detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="demandId != null">
+        #{demandId,jdbcType=VARCHAR},
+      </if>
+      <if test="demandTitle != null">
+        #{demandTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="demandLink != null">
+        #{demandLink,jdbcType=VARCHAR},
+      </if>
+      <if test="demandOrder != null">
+        #{demandOrder,jdbcType=TINYINT},
+      </if>
+      <if test="demandStatus != null">
+        #{demandStatus,jdbcType=BIT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="demandKeyword != null">
+        #{demandKeyword,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="demandDetail != null">
+        #{demandDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zyr.demo_generator.dao.entity.FreelancerDemandEntityWithBLOBs">
+    update inspire_freelancer_demand
+    <set>
+      <if test="demandId != null">
+        demand_id = #{demandId,jdbcType=VARCHAR},
+      </if>
+      <if test="demandTitle != null">
+        demand_title = #{demandTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="demandLink != null">
+        demand_link = #{demandLink,jdbcType=VARCHAR},
+      </if>
+      <if test="demandOrder != null">
+        demand_order = #{demandOrder,jdbcType=TINYINT},
+      </if>
+      <if test="demandStatus != null">
+        demand_status = #{demandStatus,jdbcType=BIT},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="demandKeyword != null">
+        demand_keyword = #{demandKeyword,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="demandDetail != null">
+        demand_detail = #{demandDetail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zyr.demo_generator.dao.entity.FreelancerDemandEntityWithBLOBs">
+    update inspire_freelancer_demand
+    set demand_id = #{demandId,jdbcType=VARCHAR},
+      demand_title = #{demandTitle,jdbcType=VARCHAR},
+      demand_link = #{demandLink,jdbcType=VARCHAR},
+      demand_order = #{demandOrder,jdbcType=TINYINT},
+      demand_status = #{demandStatus,jdbcType=BIT},
+      create_user_id = #{createUserId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      demand_keyword = #{demandKeyword,jdbcType=LONGVARCHAR},
+      demand_detail = #{demandDetail,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zyr.demo_generator.dao.entity.FreelancerDemandEntity">
+    update inspire_freelancer_demand
+    set demand_id = #{demandId,jdbcType=VARCHAR},
+      demand_title = #{demandTitle,jdbcType=VARCHAR},
+      demand_link = #{demandLink,jdbcType=VARCHAR},
+      demand_order = #{demandOrder,jdbcType=TINYINT},
+      demand_status = #{demandStatus,jdbcType=BIT},
+      create_user_id = #{createUserId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sinnet.inspire.wxsmallservice.dao.mapper.FreelancerRedEnvelopesTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerRedEnvelopesTask" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="task_id" property="taskId" jdbcType="VARCHAR" />
+    <result column="poster_url" property="posterUrl" jdbcType="VARCHAR" />
+    <result column="task_status" property="taskStatus" jdbcType="TINYINT" />
+    <result column="create_user_id" property="createUserId" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerRedEnvelopesTask" extends="BaseResultMap" >
+    <result column="task_details" property="taskDetails" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, task_id, poster_url, task_status, create_user_id, create_date, update_user_id, 
+    update_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    task_details
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from inspire_freelancer_red_envelopes_task
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from inspire_freelancer_red_envelopes_task
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerRedEnvelopesTask" >
+    insert into inspire_freelancer_red_envelopes_task (id, task_id, poster_url, 
+      task_status, create_user_id, create_date, 
+      update_user_id, update_date, task_details
+      )
+    values (#{id,jdbcType=INTEGER}, #{taskId,jdbcType=VARCHAR}, #{posterUrl,jdbcType=VARCHAR}, 
+      #{taskStatus,jdbcType=TINYINT}, #{createUserId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{taskDetails,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerRedEnvelopesTask" >
+    insert into inspire_freelancer_red_envelopes_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="taskId != null" >
+        task_id,
+      </if>
+      <if test="posterUrl != null" >
+        poster_url,
+      </if>
+      <if test="taskStatus != null" >
+        task_status,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="taskDetails != null" >
+        task_details,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="posterUrl != null" >
+        #{posterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="taskStatus != null" >
+        #{taskStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskDetails != null" >
+        #{taskDetails,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerRedEnvelopesTask" >
+    update inspire_freelancer_red_envelopes_task
+    <set >
+      <if test="taskId != null" >
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="posterUrl != null" >
+        poster_url = #{posterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="taskStatus != null" >
+        task_status = #{taskStatus,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskDetails != null" >
+        task_details = #{taskDetails,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerRedEnvelopesTask" >
+    update inspire_freelancer_red_envelopes_task
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      poster_url = #{posterUrl,jdbcType=VARCHAR},
+      task_status = #{taskStatus,jdbcType=TINYINT},
+      create_user_id = #{createUserId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      task_details = #{taskDetails,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerRedEnvelopesTask" >
+    update inspire_freelancer_red_envelopes_task
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      poster_url = #{posterUrl,jdbcType=VARCHAR},
+      task_status = #{taskStatus,jdbcType=TINYINT},
+      create_user_id = #{createUserId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

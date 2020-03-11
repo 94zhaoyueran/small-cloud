@@ -1,0 +1,11 @@
+server:
+  port: 10091
+spring:
+  application:
+    name: test-rabbitmq-producer
+  rabbitmq:
+    host: 192.168.99.100
+    port: 5672   #使用amqp协议，这里是协议端口，不是登录端口
+    username: guest
+    password: guest
+    virtual-host: /

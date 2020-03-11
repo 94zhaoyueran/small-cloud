@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sinnet.inspire.wxsmallservice.dao.mapper.FreelancerQuestionnaireMapper" >
+  <resultMap id="BaseResultMap" type="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerQuestionnaire" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="questionnaire_id" property="questionnaireId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="occupation" property="occupation" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="is_aws_product" property="isAwsProduct" jdbcType="TINYINT" />
+    <result column="is_plan_cloud" property="isPlanCloud" jdbcType="VARCHAR" />
+    <result column="is_extension_sinnet_cloud" property="isExtensionSinnetCloud" jdbcType="TINYINT" />
+    <result column="qr_code" property="qrCode" jdbcType="VARCHAR" />
+    <result column="create_user_id" property="createUserId" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, questionnaire_id, user_id, real_name, occupation, company_name, mobile, email, 
+    is_aws_product, is_plan_cloud, is_extension_sinnet_cloud, qr_code, create_user_id, 
+    create_date, update_user_id, update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from inspire_freelancer_questionnaire
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from inspire_freelancer_questionnaire
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerQuestionnaire" >
+    insert into inspire_freelancer_questionnaire (id, questionnaire_id, user_id, 
+      real_name, occupation, company_name, 
+      mobile, email, is_aws_product, 
+      is_plan_cloud, is_extension_sinnet_cloud, qr_code, 
+      create_user_id, create_date, update_user_id, 
+      update_date)
+    values (#{id,jdbcType=INTEGER}, #{questionnaireId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR}, #{occupation,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{isAwsProduct,jdbcType=TINYINT}, 
+      #{isPlanCloud,jdbcType=VARCHAR}, #{isExtensionSinnetCloud,jdbcType=TINYINT}, #{qrCode,jdbcType=VARCHAR}, 
+      #{createUserId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerQuestionnaire" >
+    insert into inspire_freelancer_questionnaire
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="questionnaireId != null" >
+        questionnaire_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="occupation != null" >
+        occupation,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="isAwsProduct != null" >
+        is_aws_product,
+      </if>
+      <if test="isPlanCloud != null" >
+        is_plan_cloud,
+      </if>
+      <if test="isExtensionSinnetCloud != null" >
+        is_extension_sinnet_cloud,
+      </if>
+      <if test="qrCode != null" >
+        qr_code,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="questionnaireId != null" >
+        #{questionnaireId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null" >
+        #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isAwsProduct != null" >
+        #{isAwsProduct,jdbcType=TINYINT},
+      </if>
+      <if test="isPlanCloud != null" >
+        #{isPlanCloud,jdbcType=VARCHAR},
+      </if>
+      <if test="isExtensionSinnetCloud != null" >
+        #{isExtensionSinnetCloud,jdbcType=TINYINT},
+      </if>
+      <if test="qrCode != null" >
+        #{qrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerQuestionnaire" >
+    update inspire_freelancer_questionnaire
+    <set >
+      <if test="questionnaireId != null" >
+        questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null" >
+        occupation = #{occupation,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isAwsProduct != null" >
+        is_aws_product = #{isAwsProduct,jdbcType=TINYINT},
+      </if>
+      <if test="isPlanCloud != null" >
+        is_plan_cloud = #{isPlanCloud,jdbcType=VARCHAR},
+      </if>
+      <if test="isExtensionSinnetCloud != null" >
+        is_extension_sinnet_cloud = #{isExtensionSinnetCloud,jdbcType=TINYINT},
+      </if>
+      <if test="qrCode != null" >
+        qr_code = #{qrCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerQuestionnaire" >
+    update inspire_freelancer_questionnaire
+    set questionnaire_id = #{questionnaireId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      occupation = #{occupation,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      is_aws_product = #{isAwsProduct,jdbcType=TINYINT},
+      is_plan_cloud = #{isPlanCloud,jdbcType=VARCHAR},
+      is_extension_sinnet_cloud = #{isExtensionSinnetCloud,jdbcType=TINYINT},
+      qr_code = #{qrCode,jdbcType=VARCHAR},
+      create_user_id = #{createUserId,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
