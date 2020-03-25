@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sinnet.inspire.wxsmallservice.dao.mapper.FreelancerAnchorInfoEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerAnchorInfoEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="anchor_name" property="anchorName" jdbcType="VARCHAR" />
+    <result column="anchor_head_img" property="anchorHeadImg" jdbcType="VARCHAR" />
+    <result column="anchor_fans_num" property="anchorFansNum" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_user_id" property="createUserId" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_user_id" property="updateUserId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, anchor_name, anchor_head_img, anchor_fans_num, create_time, create_user_id, update_time, 
+    update_user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from inspire_freelancer_anchor_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from inspire_freelancer_anchor_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerAnchorInfoEntity" >
+    insert into inspire_freelancer_anchor_info (id, anchor_name, anchor_head_img, 
+      anchor_fans_num, create_time, create_user_id, 
+      update_time, update_user_id)
+    values (#{id,jdbcType=INTEGER}, #{anchorName,jdbcType=VARCHAR}, #{anchorHeadImg,jdbcType=VARCHAR}, 
+      #{anchorFansNum,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerAnchorInfoEntity" >
+    insert into inspire_freelancer_anchor_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="anchorName != null" >
+        anchor_name,
+      </if>
+      <if test="anchorHeadImg != null" >
+        anchor_head_img,
+      </if>
+      <if test="anchorFansNum != null" >
+        anchor_fans_num,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createUserId != null" >
+        create_user_id,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="anchorName != null" >
+        #{anchorName,jdbcType=VARCHAR},
+      </if>
+      <if test="anchorHeadImg != null" >
+        #{anchorHeadImg,jdbcType=VARCHAR},
+      </if>
+      <if test="anchorFansNum != null" >
+        #{anchorFansNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        #{updateUserId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerAnchorInfoEntity" >
+    update inspire_freelancer_anchor_info
+    <set >
+      <if test="anchorName != null" >
+        anchor_name = #{anchorName,jdbcType=VARCHAR},
+      </if>
+      <if test="anchorHeadImg != null" >
+        anchor_head_img = #{anchorHeadImg,jdbcType=VARCHAR},
+      </if>
+      <if test="anchorFansNum != null" >
+        anchor_fans_num = #{anchorFansNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUserId != null" >
+        create_user_id = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null" >
+        update_user_id = #{updateUserId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sinnet.inspire.wxsmallservice.dao.entity.FreelancerAnchorInfoEntity" >
+    update inspire_freelancer_anchor_info
+    set anchor_name = #{anchorName,jdbcType=VARCHAR},
+      anchor_head_img = #{anchorHeadImg,jdbcType=VARCHAR},
+      anchor_fans_num = #{anchorFansNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user_id = #{createUserId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

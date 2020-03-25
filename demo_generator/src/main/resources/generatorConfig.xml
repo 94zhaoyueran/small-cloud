@@ -14,7 +14,7 @@
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://172.16.0.82:3306/sinnet_crm_data_v2" userId="zhangjy"
+                        connectionURL="jdbc:mysql://172.16.0.82:3306/sinnet_data_copy" userId="zhangjy"
                         password="GUANGhuan.123$">
         </jdbcConnection>
         <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
@@ -49,7 +49,7 @@
         </javaClientGenerator>
         <!-- 指定数据库表 -->
         <!--        <table schema="hr" tableName="Hr"></table>-->
-        <table tableName="inspire_freelancer_red_envelopes_info" domainObjectName="FreelancerRedEnvelopesInfo"
+        <table tableName="inspire_freelancer_anchor_info" domainObjectName="FreelancerAnchorInfoEntity"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
