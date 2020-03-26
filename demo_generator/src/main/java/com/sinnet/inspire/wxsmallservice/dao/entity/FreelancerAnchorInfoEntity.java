@@ -15,6 +15,7 @@ public class FreelancerAnchorInfoEntity {
 
     private String createUserId;
 
+
     private Date updateTime;
 
     private String updateUserId;
